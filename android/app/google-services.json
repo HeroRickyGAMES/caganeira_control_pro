@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "411578034710",
+    "project_id": "caganeira-control-pro",
+    "storage_bucket": "caganeira-control-pro.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:411578034710:android:6058d710976872833ce337",
+        "android_client_info": {
+          "package_name": "com.hrt.caganeira_control_pro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHk5R7HL8qRxEDq40zoDcdwKIDtsKsffs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
