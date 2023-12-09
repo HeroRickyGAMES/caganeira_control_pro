@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 int caganeiraDay = 0;
 var UID = FirebaseAuth.instance.currentUser?.uid;
 bool init = false;
+String id = "$UID${DateTime.now().month}${DateTime.now().day}${DateTime.now().year}";
 
 class mainTela extends StatefulWidget {
   const mainTela({super.key});
@@ -43,6 +44,7 @@ class _mainTelaState extends State<mainTela> {
             StreamBuilder(stream: FirebaseFirestore.instance
                 .collection('caganeraday')
                 .where("idPertence", isEqualTo: UID)
+                .where("id", isEqualTo: id)
                 .snapshots(), builder: (BuildContext context,
                 AsyncSnapshot<QuerySnapshot> snapshot){
 
@@ -87,21 +89,19 @@ class _mainTelaState extends State<mainTela> {
                 ),
               );
               }),
-            Container(
-              child: ElevatedButton(
-                onPressed: (){
-                  setState(() {
-                    String id = "$UID${DateTime.now().month}${DateTime.now().day}${DateTime.now().year}";
-                    caganeiraDay ++;
-                    FirebaseFirestore.instance.collection("caganeraday").doc(id).set({
-                      "id": id,
-                      "cagacont": caganeiraDay,
-                      "idPertence": UID
-                    });
+            ElevatedButton(
+              onPressed: (){
+                setState(() {
+                  caganeiraDay ++;
+                  FirebaseFirestore.instance.collection("caganeraday").doc(id).set({
+                    "id": id,
+                    "cagacont": caganeiraDay,
+                    "idPertence": UID,
+                    "data": "${DateTime.now().month}/${DateTime.now().day}/${DateTime.now().year}"
                   });
-                },
-                child: const Text('ACABEI DE CAGAR'),
-              ),
+                });
+              },
+              child: const Text('ACABEI DE CAGAR'),
             ),
             Container(
               padding: const EdgeInsets.all(26),

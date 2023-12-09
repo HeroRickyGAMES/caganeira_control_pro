@@ -59,4 +59,12 @@ class DefaultFirebaseOptions {
     projectId: 'caganeira-control-pro',
     storageBucket: 'caganeira-control-pro.appspot.com',
   );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyAHk5R7HL8qRxEDq40zoDcdwKIDtsKsffs',
+    appId: '1:411578034710:android:6058d710976872833ce337',
+    messagingSenderId: '411578034710',
+    projectId: 'caganeira-control-pro',
+    storageBucket: 'caganeira-control-pro.appspot.com',
+  );
 }

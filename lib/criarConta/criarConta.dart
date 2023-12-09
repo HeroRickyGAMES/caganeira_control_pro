@@ -6,6 +6,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+//Desenvolvido por HeroRickyGames
+
 class criarConta extends StatefulWidget {
   const criarConta({super.key});
 
@@ -173,21 +175,9 @@ class _criarContaState extends State<criarConta> {
                         );
                       }else{
 
-                        var auth = FirebaseAuth.instance;
-
-                        auth.createUserWithEmailAndPassword(email: Email, password: Senha).whenComplete(() {
-                          var UID = FirebaseAuth.instance.currentUser?.uid;
-
-                          FirebaseFirestore.instance.collection('Users').doc().set({
-                            'uid': UID,
-                            'Nome' : nome.trim(),
-                            'Email': Email.trim(),
-                          }).whenComplete(() {
-                            irParaTelaMain();
-                          });
-                        }).catchError((e){
+                        if(!Email.contains("@")){
                           Fluttertoast.showToast(
-                              msg: "Ocorreu um erro: $e",
+                              msg: "Preencha o email corretamente",
                               toastLength: Toast.LENGTH_SHORT,
                               gravity: ToastGravity.CENTER,
                               timeInSecForIosWeb: 1,
@@ -195,7 +185,55 @@ class _criarContaState extends State<criarConta> {
                               textColor: Colors.white,
                               fontSize: 16.0
                           );
-                        });
+                        }else{
+                          if(!Email.contains(".com")){
+                            Fluttertoast.showToast(
+                                msg: "Preencha o email corretamente",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.CENTER,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.red,
+                                textColor: Colors.white,
+                                fontSize: 16.0
+                            );
+                          }else{
+                            if(Senha.length < 8){
+                              Fluttertoast.showToast(
+                                  msg: "Sua senha é curta de mais!",
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  gravity: ToastGravity.CENTER,
+                                  timeInSecForIosWeb: 1,
+                                  backgroundColor: Colors.red,
+                                  textColor: Colors.white,
+                                  fontSize: 16.0
+                              );
+                            }else{
+                              var auth = FirebaseAuth.instance;
+
+                              auth.createUserWithEmailAndPassword(email: Email, password: Senha).whenComplete(() {
+                                var UID = FirebaseAuth.instance.currentUser?.uid;
+
+                                FirebaseFirestore.instance.collection('Users').doc().set({
+                                  'uid': UID,
+                                  'Nome' : nome.trim(),
+                                  'Email': Email.trim(),
+                                }).whenComplete(() {
+                                  irParaTelaMain();
+                                });
+                              }).catchError((e){
+                                Fluttertoast.showToast(
+                                    msg: "Ocorreu um erro: $e",
+                                    toastLength: Toast.LENGTH_SHORT,
+                                    gravity: ToastGravity.CENTER,
+                                    timeInSecForIosWeb: 1,
+                                    backgroundColor: Colors.red,
+                                    textColor: Colors.white,
+                                    fontSize: 16.0
+                                );
+                              });
+                            }
+                          }
+                        }
                       }
                     }
                   }

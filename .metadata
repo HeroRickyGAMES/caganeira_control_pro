@@ -15,7 +15,7 @@ migration:
     - platform: root
       create_revision: edf278658ba370ba147608476855afa50b54c7a6
       base_revision: edf278658ba370ba147608476855afa50b54c7a6
-    - platform: android
+    - platform: windows
       create_revision: edf278658ba370ba147608476855afa50b54c7a6
       base_revision: edf278658ba370ba147608476855afa50b54c7a6
 
