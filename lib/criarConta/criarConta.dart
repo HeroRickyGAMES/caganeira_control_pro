@@ -213,7 +213,7 @@ class _criarContaState extends State<criarConta> {
                               auth.createUserWithEmailAndPassword(email: Email, password: Senha).whenComplete(() {
                                 var UID = FirebaseAuth.instance.currentUser?.uid;
 
-                                FirebaseFirestore.instance.collection('Users').doc().set({
+                                FirebaseFirestore.instance.collection('Users').doc(UID).set({
                                   'uid': UID,
                                   'Nome' : nome.trim(),
                                   'Email': Email.trim(),
