@@ -217,6 +217,7 @@ class _criarContaState extends State<criarConta> {
                                   'uid': UID,
                                   'Nome' : nome.trim(),
                                   'Email': Email.trim(),
+                                  "pdl": 0
                                 }).whenComplete(() {
                                   irParaTelaMain();
                                 });
