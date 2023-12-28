@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:caganeira_control_pro/firebase_options.dart';
 import 'package:caganeira_control_pro/loginScreen/login.dart';
 import 'package:caganeira_control_pro/mainTela/mainTela.dart';
@@ -7,6 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+//Desenvolvido por HeroRickyGames
 
 initDB(context) async {
 
