@@ -298,7 +298,7 @@ class _mainTelaState extends State<mainTela> {
                   Container(),
                   Text('Pontos de Rank: $PDL'),
                   eloDesafianteDeMerda == true ?
-                  Text(
+                  const Text(
                     textAlign: TextAlign.center,
                       "MEUS PARABENZIO! Você virou o Desafiante das Merdas, a maior merda que a humanidade fez, literalmente"
                   ):
