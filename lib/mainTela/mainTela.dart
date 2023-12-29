@@ -169,47 +169,47 @@ class _mainTelaState extends State<mainTela> {
                     }
 
                     if(elofolha == true){
-                      PDL + 80;
+                      PDL = PDL + 80;
                     }
 
                     if(eloconcreto == true){
-                      PDL + 70;
+                      PDL = PDL + 70;
                     }
 
                     if(eloFerro == true){
-                      PDL + 60;
+                      PDL = PDL + 60;
                     }
 
                     if(eloBronze == true){
-                      PDL + 50;
+                      PDL = PDL + 50;
                     }
 
                     if(eloPrata == true){
-                      PDL + 50;
+                      PDL = PDL + 50;
                     }
 
                     if(eloAco == true){
-                      PDL + 48;
+                      PDL = PDL + 48;
                     }
 
                     if(eloOuro == true){
-                      PDL + 45;
+                      PDL = PDL + 45;
                     }
 
                     if(eloPlatina == true){
-                      PDL + 40;
+                      PDL = PDL + 40;
                     }
 
                     if(eloMestre == true){
-                      PDL + 35;
+                      PDL = PDL + 35;
                     }
 
                     if(eloGM == true){
-                      PDL + 25;
+                      PDL = PDL + 25;
                     }
 
                     if(eloDesafiante == true){
-                      PDL + 20;
+                      PDL = PDL + 20;
                     }
 
                     FirebaseFirestore.instance.collection("Users").doc(UID).update({
