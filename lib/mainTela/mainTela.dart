@@ -163,7 +163,6 @@ class _mainTelaState extends State<mainTela> {
                     eloDesafiante = Desafiante(PDL);
                     eloDesafianteDeMerda = DesafianteDaMerda(PDL);
 
-                    print(elobarro);
                     if(elobarro == true){
                       PDL = PDL + 100;
                     }
