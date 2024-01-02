@@ -14,38 +14,42 @@ bool Ferro(int x) {
   return (x >= 1200) && (x <= 1599);
 }
 
-bool Bronze(int x) {
+bool Porcelana(int x) {
   return (x >= 1600) && (x <= 1999);
 }
 
-bool Prata(int x) {
+bool Bronze(int x) {
   return (x >= 2000) && (x <= 2399);
 }
 
-bool Aco(int x) {
+bool Prata(int x) {
   return (x >= 2400) && (x <= 2799);
 }
 
-bool Ouro(int x) {
+bool Aco(int x) {
   return (x >= 2800) && (x <= 3199);
 }
 
-bool Platina(int x) {
+bool Ouro(int x) {
   return (x >= 3200) && (x <= 3599);
 }
 
-bool Mestre(int x) {
+bool Platina(int x) {
   return (x >= 3600) && (x <= 3999);
 }
 
-bool GM(int x) {
+bool Mestre(int x) {
   return (x >= 4000) && (x <= 4399);
 }
 
-bool Desafiante(int x) {
+bool GM(int x) {
   return (x >= 4400) && (x <= 4799);
 }
 
+bool Desafiante(int x) {
+  return (x >= 4800) && (x <= 5199);
+}
+
 bool DesafianteDaMerda(int x) {
-  return (x >= 4800);
+  return (x >= 5200);
 }

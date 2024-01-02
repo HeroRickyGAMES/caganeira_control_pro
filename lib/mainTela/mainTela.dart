@@ -1,4 +1,5 @@
 import 'package:caganeira_control_pro/mobileAds/mobileAds.dart';
+import 'package:caganeira_control_pro/multiplosde10/multiplosde10.dart';
 import 'package:caganeira_control_pro/ranksystem.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -10,12 +11,13 @@ bool isStarted = false;
 int caganeiraDay = 0;
 var UID = FirebaseAuth.instance.currentUser?.uid;
 bool init = false;
-String id = "$UID${DateTime.now().month}${DateTime.now().day}${DateTime.now().year}";
+String id = "$UID${DateTime.now().year}${DateTime.now().month}${DateTime.now().day}";
 int PDL = 0;
 bool elobarro = false;
 bool elofolha = false;
 bool eloconcreto = false;
 bool eloFerro = false;
+bool eloPorcelana = false;
 bool eloBronze = false;
 bool eloPrata = false;
 bool eloAco = false;
@@ -48,6 +50,7 @@ class _mainTelaState extends State<mainTela> {
       elofolha = Folha(PDL);
       eloconcreto = Concreto(PDL);
       eloFerro = Ferro(PDL);
+      eloPorcelana = Porcelana(PDL);
       eloBronze = Bronze(PDL);
       eloPrata = Prata(PDL);
       eloAco = Aco(PDL);
@@ -110,7 +113,6 @@ class _mainTelaState extends State<mainTela> {
                   ),
                 );
               }
-
               return Center(
                 child: Stack(
                   children: snapshot.data!.docs.map((documents) {
@@ -144,15 +146,15 @@ class _mainTelaState extends State<mainTela> {
                     "id": id,
                     "cagacont": caganeiraDay,
                     "idPertence": UID,
-                    "data": "${DateTime.now().month}/${DateTime.now().day}/${DateTime.now().year}"
+                    "data": "${DateTime.now().year}/${DateTime.now().month}/${DateTime.now().day}"
                   });
-
 
                   if(caganeiraDay < 10){
                     elobarro = Barro(PDL);
                     elofolha = Folha(PDL);
                     eloconcreto = Concreto(PDL);
                     eloFerro = Ferro(PDL);
+                    eloPorcelana = Porcelana(PDL);
                     eloBronze = Bronze(PDL);
                     eloPrata = Prata(PDL);
                     eloAco = Aco(PDL);
@@ -179,8 +181,12 @@ class _mainTelaState extends State<mainTela> {
                       PDL = PDL + 60;
                     }
 
+                    if(eloPorcelana == true){
+                      PDL = PDL + 55;
+                    }
+
                     if(eloBronze == true){
-                      PDL = PDL + 50;
+                      PDL = PDL + 53;
                     }
 
                     if(eloPrata == true){
@@ -211,12 +217,18 @@ class _mainTelaState extends State<mainTela> {
                       PDL = PDL + 20;
                     }
 
+                    if(eloDesafianteDeMerda == true){
+                      PDL = PDL + 20;
+                    }
+
                     FirebaseFirestore.instance.collection("Users").doc(UID).update({
                       "pdl": PDL
                     });
                   }
 
-                  if(caganeiraDay == 10){
+                  bool multi = ehMultiploDe10(caganeiraDay);
+
+                  if(multi){
                     interAdReward(false);
                   }
                 });
@@ -247,6 +259,11 @@ class _mainTelaState extends State<mainTela> {
                   eloFerro == true ?
                   Image.asset(
                     "assets/elos/elo_ferro.png",
+                    scale: 4,
+                  ):
+                  eloPorcelana == true ?
+                  Image.asset(
+                    "assets/elos/elo_procelana.png",
                     scale: 4,
                   ):
                   eloBronze == true ?
@@ -311,6 +328,30 @@ class _mainTelaState extends State<mainTela> {
             )
           ],
         ),
+      ),
+      drawer: Drawer(
+        child: StreamBuilder(stream: FirebaseFirestore.instance
+            .collection('caganeraday')
+            .where("idPertence", isEqualTo: UID)
+            .snapshots(), builder: (BuildContext context,
+            AsyncSnapshot<QuerySnapshot> snapshot){
+          if (!snapshot.hasData) {
+            return Container();
+          }
+          if(snapshot.data!.docs.isEmpty){
+            return Container();
+          }
+          return Center(
+            child: ListView(
+              children: snapshot.data!.docs.map((documents) {
+                return Container(
+                  padding: const EdgeInsets.all(16),
+                  child: Text("data: ${documents['data']} vezes cagadas: ${documents['cagacont']}"),
+                );
+              }).toList(),
+            ),
+          );
+        }),
       ),
     );
   }
