@@ -1,9 +1,9 @@
 import 'package:caganeira_control_pro/criarConta/criarConta.dart';
 import 'package:caganeira_control_pro/mainTela/mainTela.dart';
 import 'package:caganeira_control_pro/mobileAds/mobileAds.dart';
+import 'package:caganeira_control_pro/toast/toast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 //Desenvolvido por HeroRickyGames
 
@@ -115,40 +115,15 @@ class _loginState extends State<login> {
                 child: ElevatedButton(onPressed: () async {
 
                   if(Email == ''){
-                    Fluttertoast.showToast(
-                        msg: "Preencha seu email!",
-                        toastLength: Toast.LENGTH_SHORT,
-                        gravity: ToastGravity.CENTER,
-                        timeInSecForIosWeb: 1,
-                        backgroundColor: Colors.red,
-                        textColor: Colors.white,
-                        fontSize: 16.0
-                    );
+                    toastShow("Preencha seu email!", "SHORT");
                   }else{
                     if(Senha == ''){
-                      Fluttertoast.showToast(
-                          msg: "Preencha sua senha!",
-                          toastLength: Toast.LENGTH_SHORT,
-                          gravity: ToastGravity.CENTER,
-                          timeInSecForIosWeb: 1,
-                          backgroundColor: Colors.red,
-                          textColor: Colors.white,
-                          fontSize: 16.0
-                      );
-
+                      toastShow("Preencha sua senha!", "SHORT");
                     }else{
                       bool onError = false;
                       _auth.signInWithEmailAndPassword(email: Email, password: Senha).catchError((e){
                         onError = true;
-                        Fluttertoast.showToast(
-                            msg: "Ocorreu um erro: $e",
-                            toastLength: Toast.LENGTH_SHORT,
-                            gravity: ToastGravity.CENTER,
-                            timeInSecForIosWeb: 1,
-                            backgroundColor: Colors.red,
-                            textColor: Colors.white,
-                            fontSize: 16.0
-                        );
+                        toastShow("Ocorreu um erro: $e", "SHORT");
                       }).whenComplete(() {
                         if(onError == false){
                           irParaTelaMain();
@@ -171,28 +146,12 @@ class _loginState extends State<login> {
               TextButton(onPressed: (){
 
                 if(Email == ''){
-                  Fluttertoast.showToast(
-                      msg: "Preencha o seu email!",
-                      toastLength: Toast.LENGTH_SHORT,
-                      gravity: ToastGravity.CENTER,
-                      timeInSecForIosWeb: 1,
-                      backgroundColor: Colors.red,
-                      textColor: Colors.white,
-                      fontSize: 16.0
-                  );
+                  toastShow("Preencha o seu email!", "SHORT");
                 }else{
                   var auth = FirebaseAuth.instance;
 
                   auth.sendPasswordResetEmail(email: Email).whenComplete((){
-                    Fluttertoast.showToast(
-                        msg: "Email de recuperação enviado para seu email!",
-                        toastLength: Toast.LENGTH_SHORT,
-                        gravity: ToastGravity.CENTER,
-                        timeInSecForIosWeb: 1,
-                        backgroundColor: Colors.red,
-                        textColor: Colors.white,
-                        fontSize: 16.0
-                    );
+                    toastShow( "Email de recuperação enviado para seu email! Verifique na caixa de spam ou na recebida!", "LONG");
                   });
                 }
               }, child: const Text(

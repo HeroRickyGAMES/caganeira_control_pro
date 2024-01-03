@@ -1,10 +1,10 @@
 import 'package:caganeira_control_pro/loginScreen/login.dart';
 import 'package:caganeira_control_pro/mainTela/mainTela.dart';
 import 'package:caganeira_control_pro/mobileAds/mobileAds.dart';
+import 'package:caganeira_control_pro/toast/toast.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 //Desenvolvido por HeroRickyGames
 
@@ -142,71 +142,22 @@ class _criarContaState extends State<criarConta> {
               Center(
                 child: ElevatedButton(onPressed: () async {
                   if(nome == ''){
-                    Fluttertoast.showToast(
-                        msg: "Preencha seu nome!",
-                        toastLength: Toast.LENGTH_SHORT,
-                        gravity: ToastGravity.CENTER,
-                        timeInSecForIosWeb: 1,
-                        backgroundColor: Colors.red,
-                        textColor: Colors.white,
-                        fontSize: 16.0
-                    );
+                    toastShow("Preencha seu nome!", "SHORT");
                   }else{
                     if(Email == ''){
-                      Fluttertoast.showToast(
-                          msg: "Preencha seu email!",
-                          toastLength: Toast.LENGTH_SHORT,
-                          gravity: ToastGravity.CENTER,
-                          timeInSecForIosWeb: 1,
-                          backgroundColor: Colors.red,
-                          textColor: Colors.white,
-                          fontSize: 16.0
-                      );
+                      toastShow("Preencha seu email!", "SHORT");
                     }else{
                       if(Senha == ''){
-                        Fluttertoast.showToast(
-                            msg: "Preencha seu senha!",
-                            toastLength: Toast.LENGTH_SHORT,
-                            gravity: ToastGravity.CENTER,
-                            timeInSecForIosWeb: 1,
-                            backgroundColor: Colors.red,
-                            textColor: Colors.white,
-                            fontSize: 16.0
-                        );
+                        toastShow("Preencha seu senha!", "SHORT");
                       }else{
-
                         if(!Email.contains("@")){
-                          Fluttertoast.showToast(
-                              msg: "Preencha o email corretamente",
-                              toastLength: Toast.LENGTH_SHORT,
-                              gravity: ToastGravity.CENTER,
-                              timeInSecForIosWeb: 1,
-                              backgroundColor: Colors.red,
-                              textColor: Colors.white,
-                              fontSize: 16.0
-                          );
+                          toastShow("Preencha o email corretamente", "SHORT");
                         }else{
                           if(!Email.contains(".com")){
-                            Fluttertoast.showToast(
-                                msg: "Preencha o email corretamente",
-                                toastLength: Toast.LENGTH_SHORT,
-                                gravity: ToastGravity.CENTER,
-                                timeInSecForIosWeb: 1,
-                                backgroundColor: Colors.red,
-                                textColor: Colors.white,
-                                fontSize: 16.0
-                            );
+                            toastShow("Preencha o email corretamente", "SHORT");
                           }else{
                             if(Senha.length < 8){
-                              Fluttertoast.showToast(
-                                  msg: "Sua senha é curta de mais!",
-                                  toastLength: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.CENTER,
-                                  timeInSecForIosWeb: 1,
-                                  backgroundColor: Colors.red,
-                                  textColor: Colors.white,
-                                  fontSize: 16.0
-                              );
+                              toastShow("Sua senha é curta de mais!", "SHORT");
                             }else{
                               var auth = FirebaseAuth.instance;
 
@@ -222,15 +173,7 @@ class _criarContaState extends State<criarConta> {
                                   irParaTelaMain();
                                 });
                               }).catchError((e){
-                                Fluttertoast.showToast(
-                                    msg: "Ocorreu um erro: $e",
-                                    toastLength: Toast.LENGTH_SHORT,
-                                    gravity: ToastGravity.CENTER,
-                                    timeInSecForIosWeb: 1,
-                                    backgroundColor: Colors.red,
-                                    textColor: Colors.white,
-                                    fontSize: 16.0
-                                );
+                                toastShow("Ocorreu um erro: $e", "SHORT");
                               });
                             }
                           }

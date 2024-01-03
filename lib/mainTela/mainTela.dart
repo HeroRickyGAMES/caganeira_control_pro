@@ -1,6 +1,7 @@
 import 'package:caganeira_control_pro/mobileAds/mobileAds.dart';
 import 'package:caganeira_control_pro/multiplosde10/multiplosde10.dart';
 import 'package:caganeira_control_pro/ranksystem.dart';
+import 'package:caganeira_control_pro/toast/toast.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -231,6 +232,27 @@ class _mainTelaState extends State<mainTela> {
                   if(multi){
                     interAdReward(false);
                   }
+
+                  if(caganeiraDay == 15){
+                    toastShow("Está cagando de mais hoje!", "SHORT");
+                  }
+
+                  if(caganeiraDay == 17){
+                    toastShow("Talvez você esteja com sinais de diarreia!", "SHORT");
+                  }
+
+                  if(caganeiraDay == 20){
+                    toastShow("Melhor você ir a um hospital", "SHORT");
+                  }
+
+                  if(caganeiraDay == 25){
+                    toastShow("A industria de papel tá crescendo e você está financiando!", "SHORT");
+                  }
+
+                  if(caganeiraDay == 30){
+                    toastShow("Vai colocar até às tripas para fora deste jeito", "SHORT");
+                  }
+
                 });
               },
               child: const Text('ACABEI DE CAGAR'),
