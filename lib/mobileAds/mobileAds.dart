@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
@@ -104,17 +105,21 @@ void interAdReward(bool isPremium) async {
 
     void _createInterstitialAd() {
       InterstitialAd.load(
-          adUnitId: "ca-app-pub-1895475762491539/2333767339",
+          adUnitId: "ca-app-pub-1895475762491539/8553612556",
           request: request,
           adLoadCallback: InterstitialAdLoadCallback(
             onAdLoaded: (InterstitialAd ad) {
-              print('$ad loaded');
+              if (kDebugMode) {
+                print('$ad loaded');
+              }
               interstitialAd = ad;
               numInterstitialLoadAttempts = 0;
               interstitialAd!.setImmersiveMode(true);
             },
             onAdFailedToLoad: (LoadAdError error) {
-              print('InterstitialAd failed to load: $error.');
+              if (kDebugMode) {
+                print('InterstitialAd failed to load: $error.');
+              }
               numInterstitialLoadAttempts += 1;
               interstitialAd = null;
               if (numInterstitialLoadAttempts < maxFailedLoadAttempts) {
@@ -130,15 +135,21 @@ void interAdReward(bool isPremium) async {
         return;
       }
       interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
-        onAdShowedFullScreenContent: (InterstitialAd ad) =>
-            print('ad onAdShowedFullScreenContent.'),
+        onAdShowedFullScreenContent: (InterstitialAd ad) {
+          if (kDebugMode) {
+            print('ad onAdShowedFullScreenContent.');
+          }},
         onAdDismissedFullScreenContent: (InterstitialAd ad) {
-          print('$ad onAdDismissedFullScreenContent.');
+          if (kDebugMode) {
+            print('$ad onAdDismissedFullScreenContent.');
+          }
           ad.dispose();
           _createInterstitialAd();
         },
         onAdFailedToShowFullScreenContent: (InterstitialAd ad, AdError error) {
-          print('$ad onAdFailedToShowFullScreenContent: $error');
+          if (kDebugMode) {
+            print('$ad onAdFailedToShowFullScreenContent: $error');
+          }
           ad.dispose();
           _createInterstitialAd();
         },
