@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 
 //Desenvolvido por HeroRickyGames
 
+String elo = "";
 bool isStarted = false;
 int caganeiraDay = 0;
 var UID = FirebaseAuth.instance.currentUser?.uid;
@@ -28,6 +29,12 @@ bool eloMestre = false;
 bool eloGM = false;
 bool eloDesafiante = false;
 bool eloDesafianteDeMerda = false;
+bool eloMestreSolar = false;
+bool eloMestredaGalaxia = false;
+bool eloMestreUniverso = false;
+bool eloMestreMultiverso = false;
+bool eloDeusMestre = false;
+bool eloDeusRei = false;
 
 class mainTela extends StatefulWidget {
   const mainTela({super.key});
@@ -46,7 +53,6 @@ class _mainTelaState extends State<mainTela> {
 
     setState(() {
       PDL = resulte['pdl'];
-
       elobarro = Barro(PDL);
       elofolha = Folha(PDL);
       eloconcreto = Concreto(PDL);
@@ -61,6 +67,12 @@ class _mainTelaState extends State<mainTela> {
       eloGM = GM(PDL);
       eloDesafiante = Desafiante(PDL);
       eloDesafianteDeMerda = DesafianteDaMerda(PDL);
+      eloMestreSolar = MestredoSistemaSolar(PDL);
+      eloMestredaGalaxia = MestreDaGalaxia(PDL);
+      eloMestreUniverso = MestredoUniverso(PDL);
+      eloMestreMultiverso = MestreDoMultiverso(PDL);
+      eloDeusMestre = DeusMestre(PDL);
+      eloDeusRei = DeusRei(PDL);
     });
   }
   @override
@@ -141,119 +153,182 @@ class _mainTelaState extends State<mainTela> {
               }),
             ElevatedButton(
               onPressed: (){
-                setState(() {
-                  caganeiraDay ++;
-                  FirebaseFirestore.instance.collection("caganeraday").doc(id).set({
-                    "id": id,
-                    "cagacont": caganeiraDay,
-                    "idPertence": UID,
-                    "data": "${DateTime.now().year}/${DateTime.now().month}/${DateTime.now().day}"
-                  });
-
-                  if(caganeiraDay < 10){
-                    elobarro = Barro(PDL);
-                    elofolha = Folha(PDL);
-                    eloconcreto = Concreto(PDL);
-                    eloFerro = Ferro(PDL);
-                    eloPorcelana = Porcelana(PDL);
-                    eloBronze = Bronze(PDL);
-                    eloPrata = Prata(PDL);
-                    eloAco = Aco(PDL);
-                    eloOuro = Ouro(PDL);
-                    eloPlatina = Platina(PDL);
-                    eloMestre = Mestre(PDL);
-                    eloGM = GM(PDL);
-                    eloDesafiante = Desafiante(PDL);
-                    eloDesafianteDeMerda = DesafianteDaMerda(PDL);
-
-                    if(elobarro == true){
-                      PDL = PDL + 100;
-                    }
-
-                    if(elofolha == true){
-                      PDL = PDL + 80;
-                    }
-
-                    if(eloconcreto == true){
-                      PDL = PDL + 70;
-                    }
-
-                    if(eloFerro == true){
-                      PDL = PDL + 60;
-                    }
-
-                    if(eloPorcelana == true){
-                      PDL = PDL + 55;
-                    }
-
-                    if(eloBronze == true){
-                      PDL = PDL + 53;
-                    }
-
-                    if(eloPrata == true){
-                      PDL = PDL + 50;
-                    }
-
-                    if(eloAco == true){
-                      PDL = PDL + 48;
-                    }
-
-                    if(eloOuro == true){
-                      PDL = PDL + 45;
-                    }
-
-                    if(eloPlatina == true){
-                      PDL = PDL + 40;
-                    }
-
-                    if(eloMestre == true){
-                      PDL = PDL + 35;
-                    }
-
-                    if(eloGM == true){
-                      PDL = PDL + 25;
-                    }
-
-                    if(eloDesafiante == true){
-                      PDL = PDL + 20;
-                    }
-
-                    if(eloDesafianteDeMerda == true){
-                      PDL = PDL + 20;
-                    }
-
-                    FirebaseFirestore.instance.collection("Users").doc(UID).update({
-                      "pdl": PDL
+                  setState(() async {
+                    caganeiraDay ++;
+                    FirebaseFirestore.instance.collection("caganeraday").doc(id).set({
+                      "id": id,
+                      "cagacont": caganeiraDay,
+                      "idPertence": UID,
+                      "data": "${DateTime.now().year}/${DateTime.now().month}/${DateTime.now().day}"
                     });
+
+                    if(caganeiraDay < 10){
+                      if(elobarro == true){
+                        PDL = PDL + 110;
+                        elo = "Barro";
+                      }
+
+                      if(elofolha == true){
+                        PDL = PDL + 90;
+                        elo = "Folha";
+                      }
+
+                      if(eloconcreto == true){
+                        PDL = PDL + 80;
+                        elo = "Concreto";
+                      }
+
+                      if(eloFerro == true){
+                        PDL = PDL + 70;
+                        elo = "Ferro";
+                      }
+
+                      if(eloPorcelana == true){
+                        PDL = PDL + 60;
+                        elo = "Porcelana";
+                      }
+
+                      if(eloBronze == true){
+                        PDL = PDL + 55;
+                        elo = "Bronze";
+                      }
+
+                      if(eloPrata == true){
+                        PDL = PDL + 53;
+                        elo = "Prata";
+                      }
+
+                      if(eloAco == true){
+                        PDL = PDL + 50;
+                        elo = "Aço";
+                      }
+
+                      if(eloOuro == true){
+                        PDL = PDL + 45;
+                        elo = "Ouro";
+                      }
+
+                      if(eloPlatina == true){
+                        PDL = PDL + 40;
+                        elo = "Platina";
+                      }
+
+                      if(eloMestre == true){
+                        PDL = PDL + 35;
+                        elo = "Mestre";
+                      }
+
+                      if(eloGM == true){
+                        PDL = PDL + 30;
+                        elo = "Grão Mestre";
+                      }
+
+                      if(eloDesafiante == true){
+                        PDL = PDL + 25;
+                        elo = "Desafiante";
+                      }
+
+                      if(eloDesafianteDeMerda == true){
+                        PDL = PDL + 25;
+                        elo = "Desafiante";
+                      }
+
+                      if(eloMestreSolar == true){
+                        PDL = PDL + 20;
+                        elo = "Mestre do Sistema Solar";
+                      }
+
+                      if(eloMestredaGalaxia == true){
+                        PDL = PDL + 15;
+                        elo = "Mestre da Galaxia";
+                      }
+
+                      if(eloMestreUniverso == true){
+                        PDL = PDL + 10;
+                        elo = "Mestre do Universo";
+                      }
+
+                      if(eloMestreMultiverso == true){
+                        PDL = PDL + 7;
+                        elo = "Mestre do Multiverso";
+                      }
+
+                      if(eloDeusMestre == true){
+                        PDL = PDL + 5;
+                        elo = "Deus Mestre";
+                      }
+
+                      if(eloDeusRei == true){
+                        PDL = PDL + 4;
+                        elo = "Deus Rei";
+                      }
+
+                      FirebaseFirestore.instance.collection("Users").doc(UID).update({
+                        "pdl": PDL
+                      });
+
+                      var resulte = await FirebaseFirestore.instance
+                          .collection("Users")
+                          .doc(UID)
+                          .get();
+                      PDL = resulte['pdl'];
+                      elobarro = Barro(PDL);
+                      elofolha = Folha(PDL);
+                      eloconcreto = Concreto(PDL);
+                      eloFerro = Ferro(PDL);
+                      eloPorcelana = Porcelana(PDL);
+                      eloBronze = Bronze(PDL);
+                      eloPrata = Prata(PDL);
+                      eloAco = Aco(PDL);
+                      eloOuro = Ouro(PDL);
+                      eloPlatina = Platina(PDL);
+                      eloMestre = Mestre(PDL);
+                      eloGM = GM(PDL);
+                      eloDesafiante = Desafiante(PDL);
+                      eloDesafianteDeMerda = DesafianteDaMerda(PDL);
+                      eloMestreSolar = MestredoSistemaSolar(PDL);
+                      eloMestredaGalaxia = MestreDaGalaxia(PDL);
+                      eloMestreUniverso = MestredoUniverso(PDL);
+                      eloMestreMultiverso = MestreDoMultiverso(PDL);
+                      eloDeusMestre = DeusMestre(PDL);
+                      eloDeusRei = DeusRei(PDL);
+                    }
+
+                    bool multi = ehMultiploDe10(caganeiraDay);
+
+                    if(multi){
+                      interAdReward(false);
+                    }
+
+                    if(caganeiraDay == 15){
+                      toastShow("Está cagando de mais hoje!", "SHORT");
+                    }
+
+                    if(caganeiraDay == 17){
+                      toastShow("Talvez você esteja com sinais de diarreia!", "SHORT");
+                    }
+
+                    if(caganeiraDay == 20){
+                      toastShow("Melhor você ir a um hospital", "SHORT");
+                    }
+
+                    if(caganeiraDay == 25){
+                      toastShow("A industria de papel tá crescendo e você está financiando!", "SHORT");
+                    }
+
+                    if(caganeiraDay == 30){
+                      toastShow("Vai colocar até às tripas para fora deste jeito", "SHORT");
+                    }
+
+                    if(caganeiraDay == 40){
+                      toastShow("Mar rapaz, Desse jeito você lotar mais ainda o Rio Tiete!", "SHORT");
+                    }
+
+                    if(caganeiraDay > 50){
+                      toastShow("Haja Merda viu kkkkkkkkkk!", "SHORT");
+                    }
                   }
-
-                  bool multi = ehMultiploDe10(caganeiraDay);
-
-                  if(multi){
-                    interAdReward(false);
-                  }
-
-                  if(caganeiraDay == 15){
-                    toastShow("Está cagando de mais hoje!", "SHORT");
-                  }
-
-                  if(caganeiraDay == 17){
-                    toastShow("Talvez você esteja com sinais de diarreia!", "SHORT");
-                  }
-
-                  if(caganeiraDay == 20){
-                    toastShow("Melhor você ir a um hospital", "SHORT");
-                  }
-
-                  if(caganeiraDay == 25){
-                    toastShow("A industria de papel tá crescendo e você está financiando!", "SHORT");
-                  }
-
-                  if(caganeiraDay == 30){
-                    toastShow("Vai colocar até às tripas para fora deste jeito", "SHORT");
-                  }
-
-                });
+                );
               },
               child: const Text('ACABEI DE CAGAR'),
             ),
@@ -333,14 +408,54 @@ class _mainTelaState extends State<mainTela> {
                     "assets/elos/elo_desafiante.png",
                     scale: 4,
                   ):
+                  eloMestreSolar == true ?
+                  Image.asset(
+                    "assets/elos/MestreSistemaSolar.png",
+                    scale: 4,
+                  ):
+                  eloMestredaGalaxia == true ?
+                  Image.asset(
+                    "assets/elos/MestreGalaxia.png",
+                    scale: 4,
+                  ):
+                  eloMestreUniverso == true ?
+                  Image.asset(
+                    "assets/elos/MestreUniverso.png",
+                    scale: 4,
+                  ):
+                  eloMestreMultiverso == true ?
+                  Image.asset(
+                    "assets/elos/MestreMultiverso.png",
+                    scale: 4,
+                  ):
+                  eloDeusMestre == true ?
+                  Image.asset(
+                    "assets/elos/DeusMestre.png",
+                    scale: 4,
+                  ):
+                  eloDeusRei == true ?
+                  Image.asset(
+                    "assets/elos/DeusRei.png",
+                    scale: 4,
+                  ):
                   Container(),
                   Text('Pontos de Rank: $PDL'),
+                  Container(
+                    padding: const EdgeInsets.all(26),
+                    child: Text(elo),
+                  ),
                   eloDesafianteDeMerda == true ?
                   const Text(
                     textAlign: TextAlign.center,
                       "MEUS PARABENZIO! Você virou o Desafiante das Merdas, a maior merda que a humanidade fez, literalmente"
                   ):
-                      Container()
+                      Container(),
+                  eloDeusRei == true ?
+                  const Text(
+                      textAlign: TextAlign.center,
+                      "Parabéns! Você acaba de chegar ao maior ranking! Depois de muita cagada, muito esforço e muita merda, você chegou! Você merece!"
+                  ):
+                  Container(),
                 ],
               ),
             ),

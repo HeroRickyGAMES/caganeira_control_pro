@@ -1,3 +1,6 @@
+
+//Programado por HeroRickyGames
+
 bool Barro(int x) {
   return (x >= 0) && (x <= 399);
 }
@@ -51,5 +54,29 @@ bool Desafiante(int x) {
 }
 
 bool DesafianteDaMerda(int x) {
-  return (x >= 5200);
+  return (x >= 5200) && (x <= 5600);
+}
+
+bool MestredoSistemaSolar(int x) {
+  return (x >= 5600) && (x <= 5999);
+}
+
+bool MestreDaGalaxia(int x) {
+  return (x >= 6000) && (x <= 6399);
+}
+
+bool MestredoUniverso(int x) {
+  return (x >= 6400) && (x <= 6799);
+}
+
+bool MestreDoMultiverso(int x) {
+  return (x >= 6800) && (x <= 7199);
+}
+
+bool DeusMestre(int x) {
+  return (x >= 7200) && (x <= 7599);
+}
+
+bool DeusRei(int x) {
+  return (x >= 7600);
 }
