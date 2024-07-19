@@ -73,6 +73,86 @@ class _mainTelaState extends State<mainTela> {
       eloMestreMultiverso = MestreDoMultiverso(PDL);
       eloDeusMestre = DeusMestre(PDL);
       eloDeusRei = DeusRei(PDL);
+
+      if(elobarro == true){
+        elo = "Barro";
+      }
+
+      if(elofolha == true){
+        elo = "Folha";
+      }
+
+      if(eloconcreto == true){
+        elo = "Concreto";
+      }
+
+      if(eloFerro == true){
+        elo = "Ferro";
+      }
+
+      if(eloPorcelana == true){
+        elo = "Porcelana";
+      }
+
+      if(eloBronze == true){
+        elo = "Bronze";
+      }
+
+      if(eloPrata == true){
+        elo = "Prata";
+      }
+
+      if(eloAco == true){
+        elo = "Aço";
+      }
+
+      if(eloOuro == true){
+        elo = "Ouro";
+      }
+
+      if(eloPlatina == true){
+        elo = "Platina";
+      }
+
+      if(eloMestre == true){
+        elo = "Mestre";
+      }
+
+      if(eloGM == true){
+        elo = "Grão Mestre";
+      }
+
+      if(eloDesafiante == true){
+        elo = "Desafiante";
+      }
+
+      if(eloDesafianteDeMerda == true){
+        elo = "Desafiante";
+      }
+
+      if(eloMestreSolar == true){
+        elo = "Mestre do Sistema Solar";
+      }
+
+      if(eloMestredaGalaxia == true){
+        elo = "Mestre da Galaxia";
+      }
+
+      if(eloMestreUniverso == true){
+        elo = "Mestre do Universo";
+      }
+
+      if(eloMestreMultiverso == true){
+        elo = "Mestre do Multiverso";
+      }
+
+      if(eloDeusMestre == true){
+        elo = "Deus Mestre";
+      }
+
+      if(eloDeusRei == true){
+        elo = "Deus Rei";
+      }
     });
   }
   @override
@@ -439,10 +519,13 @@ class _mainTelaState extends State<mainTela> {
                     scale: 4,
                   ):
                   Container(),
-                  Text('Pontos de Rank: $PDL'),
                   Container(
-                    padding: const EdgeInsets.all(26),
-                    child: Text(elo),
+                      padding: const EdgeInsets.all(16),
+                      child: Text('Pontos de Rank: $PDL')
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: Text("Elo: $elo"),
                   ),
                   eloDesafianteDeMerda == true ?
                   const Text(
