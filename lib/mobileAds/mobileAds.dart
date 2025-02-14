@@ -72,7 +72,7 @@ class _mobileAdsState extends State<mobileAds> {
         ),
       ):Center(
         child: Text(
-          'Anuncio não carregado!\nIsso se dá se caso estiver usando um ADBlocker, por favor evite usar AdBlocker enquanto usa o Minhas Anotações Extended! Caso não esteja usando ignore essa mensagem!',
+          'Anuncio não carregado!\nIsso se dá se caso estiver usando um ADBlocker, por favor evite usar AdBlocker enquanto usa o app! Caso não esteja usando ignore essa mensagem!',
           style: TextStyle(
               color: Colors.red[800]
           ),

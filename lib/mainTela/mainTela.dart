@@ -180,7 +180,7 @@ class _mainTelaState extends State<mainTela> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              "Cagadas de hoje:",
+              "N°2 de hoje:",
               style: TextStyle(
                   fontSize: 25
               ),
@@ -244,103 +244,144 @@ class _mainTelaState extends State<mainTela> {
 
                     if(caganeiraDay < 10){
                       if(elobarro == true){
-                        PDL = PDL + 110;
-                        elo = "Barro";
+                        setState(() {
+                          PDL = PDL + 110;
+                          elo = "Barro";
+                        });
                       }
 
                       if(elofolha == true){
-                        PDL = PDL + 90;
-                        elo = "Folha";
+                        setState(() {
+                          PDL = PDL + 90;
+                          elo = "Folha";
+                        });
                       }
 
                       if(eloconcreto == true){
-                        PDL = PDL + 80;
-                        elo = "Concreto";
+                        setState(() {
+                          PDL = PDL + 80;
+                          elo = "Concreto";
+                        });
                       }
 
                       if(eloFerro == true){
-                        PDL = PDL + 70;
-                        elo = "Ferro";
+                        setState(() {
+                          PDL = PDL + 70;
+                          elo = "Ferro";
+                        });
                       }
 
                       if(eloPorcelana == true){
-                        PDL = PDL + 60;
-                        elo = "Porcelana";
+                        setState(() {
+                          PDL = PDL + 60;
+                          elo = "Porcelana";
+                        });
                       }
 
                       if(eloBronze == true){
-                        PDL = PDL + 55;
-                        elo = "Bronze";
+                        setState(() {
+                          PDL = PDL + 55;
+                          elo = "Bronze";
+                        });
                       }
 
                       if(eloPrata == true){
-                        PDL = PDL + 53;
-                        elo = "Prata";
+                        setState(() {
+                          PDL = PDL + 53;
+                          elo = "Prata";
+                        });
                       }
 
                       if(eloAco == true){
-                        PDL = PDL + 50;
-                        elo = "Aço";
+                        setState(() {
+                          PDL = PDL + 50;
+                          elo = "Aço";
+                        });
                       }
 
                       if(eloOuro == true){
-                        PDL = PDL + 45;
-                        elo = "Ouro";
+                        setState(() {
+                          PDL = PDL + 45;
+                          elo = "Ouro";
+                        });
                       }
 
                       if(eloPlatina == true){
-                        PDL = PDL + 40;
-                        elo = "Platina";
+                        setState(() {
+                          PDL = PDL + 40;
+                          elo = "Platina";
+                        });
                       }
 
                       if(eloMestre == true){
-                        PDL = PDL + 35;
-                        elo = "Mestre";
+                        setState(() {
+                          PDL = PDL + 35;
+                          elo = "Mestre";
+                        });
                       }
 
                       if(eloGM == true){
-                        PDL = PDL + 30;
-                        elo = "Grão Mestre";
+                        setState(() {
+                          PDL = PDL + 30;
+                          elo = "Grão Mestre";
+                        });
                       }
 
                       if(eloDesafiante == true){
-                        PDL = PDL + 25;
-                        elo = "Desafiante";
+                        setState(() {
+                          PDL = PDL + 25;
+                          elo = "Desafiante";
+                        });
+
                       }
 
                       if(eloDesafianteDeMerda == true){
-                        PDL = PDL + 25;
-                        elo = "Desafiante";
+                        setState(() {
+                          PDL = PDL + 25;
+                          elo = "Desafiante";
+                        });
                       }
 
                       if(eloMestreSolar == true){
-                        PDL = PDL + 20;
-                        elo = "Mestre do Sistema Solar";
+                        setState(() {
+                          PDL = PDL + 20;
+                          elo = "Mestre do Sistema Solar";
+                        });
                       }
 
                       if(eloMestredaGalaxia == true){
-                        PDL = PDL + 15;
-                        elo = "Mestre da Galaxia";
+                        setState(() {
+                          PDL = PDL + 15;
+                          elo = "Mestre da Galaxia";
+                        });
                       }
 
                       if(eloMestreUniverso == true){
-                        PDL = PDL + 10;
-                        elo = "Mestre do Universo";
+                        setState(() {
+                          PDL = PDL + 10;
+                          elo = "Mestre do Universo";
+                        });
                       }
 
                       if(eloMestreMultiverso == true){
-                        PDL = PDL + 7;
-                        elo = "Mestre do Multiverso";
+                        setState(() {
+                          PDL = PDL + 7;
+                          elo = "Mestre do Multiverso";
+                        });
                       }
 
                       if(eloDeusMestre == true){
-                        PDL = PDL + 5;
-                        elo = "Deus Mestre";
+                        setState(() {
+                          PDL = PDL + 5;
+                          elo = "Deus Mestre";
+                        });
                       }
 
                       if(eloDeusRei == true){
-                        PDL = PDL + 4;
-                        elo = "Deus Rei";
+                        setState(() {
+                          PDL = PDL + 4;
+                          elo = "Deus Rei";
+                        });
                       }
 
                       FirebaseFirestore.instance.collection("Users").doc(UID).update({
@@ -352,26 +393,28 @@ class _mainTelaState extends State<mainTela> {
                           .doc(UID)
                           .get();
                       PDL = resulte['pdl'];
-                      elobarro = Barro(PDL);
-                      elofolha = Folha(PDL);
-                      eloconcreto = Concreto(PDL);
-                      eloFerro = Ferro(PDL);
-                      eloPorcelana = Porcelana(PDL);
-                      eloBronze = Bronze(PDL);
-                      eloPrata = Prata(PDL);
-                      eloAco = Aco(PDL);
-                      eloOuro = Ouro(PDL);
-                      eloPlatina = Platina(PDL);
-                      eloMestre = Mestre(PDL);
-                      eloGM = GM(PDL);
-                      eloDesafiante = Desafiante(PDL);
-                      eloDesafianteDeMerda = DesafianteDaMerda(PDL);
-                      eloMestreSolar = MestredoSistemaSolar(PDL);
-                      eloMestredaGalaxia = MestreDaGalaxia(PDL);
-                      eloMestreUniverso = MestredoUniverso(PDL);
-                      eloMestreMultiverso = MestreDoMultiverso(PDL);
-                      eloDeusMestre = DeusMestre(PDL);
-                      eloDeusRei = DeusRei(PDL);
+                      setState(() {
+                        elobarro = Barro(PDL);
+                        elofolha = Folha(PDL);
+                        eloconcreto = Concreto(PDL);
+                        eloFerro = Ferro(PDL);
+                        eloPorcelana = Porcelana(PDL);
+                        eloBronze = Bronze(PDL);
+                        eloPrata = Prata(PDL);
+                        eloAco = Aco(PDL);
+                        eloOuro = Ouro(PDL);
+                        eloPlatina = Platina(PDL);
+                        eloMestre = Mestre(PDL);
+                        eloGM = GM(PDL);
+                        eloDesafiante = Desafiante(PDL);
+                        eloDesafianteDeMerda = DesafianteDaMerda(PDL);
+                        eloMestreSolar = MestredoSistemaSolar(PDL);
+                        eloMestredaGalaxia = MestreDaGalaxia(PDL);
+                        eloMestreUniverso = MestredoUniverso(PDL);
+                        eloMestreMultiverso = MestreDoMultiverso(PDL);
+                        eloDeusMestre = DeusMestre(PDL);
+                        eloDeusRei = DeusRei(PDL);
+                      });
                     }
 
                     bool multi = ehMultiploDe10(caganeiraDay);
@@ -410,7 +453,7 @@ class _mainTelaState extends State<mainTela> {
                   }
                 );
               },
-              child: const Text('ACABEI DE CAGAR'),
+              child: const Text('ACABEI DE FAZER O N°2'),
             ),
             Container(
               padding: const EdgeInsets.all(5),
@@ -566,7 +609,7 @@ class _mainTelaState extends State<mainTela> {
               children: snapshot.data!.docs.map((documents) {
                 return Container(
                   padding: const EdgeInsets.all(16),
-                  child: Text("data: ${documents['data']} vezes cagadas: ${documents['cagacont']}"),
+                  child: Text("data: ${documents['data']} vezes feitas o n°2: ${documents['cagacont']}"),
                 );
               }).toList(),
             ),
